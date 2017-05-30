@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SketchyWeb</title>
+<style>
+body, div, table, a, p, ul, ol, li, table, td, tr, .clear{margin:0;padding:0;border:0}
+
+body{width:100%;height:100%;background:url(img/bg.jpg) top center; margin:0 auto;font-family:"Palatino Linotype", Book Antiqua, Palatino, serif;color:#3d3d3d}
+#canvas{width:960px;height:800px;margin:100px auto 0;overflow:hidden;position:relative;z-index:500}
+#inCanvas{width:2880px;height:2400px;position:absolute}
+.scene{width:960px;height:800px;float:left}
+
+.posRes{top:0px;left:0px}
+.posArc{top:0px;left:-960px}
+.posCon{top:0px;left:-1920px}
+
+.posPro{top:-800px;left:0px}
+.posInd{top:-800px;left:-960px}
+.posAbo{top:-800px;left:-1920px}
+
+.posBle{top:-1600px;left:0px}
+.posLin{top:-1600px;left:-960px}
+.posBri{top:-1600px;left:-1920px}
+
+/*
+Index -------------------------------------------*/
+#indLinks{margin:20px 0 0 49px;list-style:none;display:block;float:left}
+	#indLinks li{visibility:hidden}
+	/*--IE8 requires specific :hover :visited info--*/
+	.indArch:link,.indArch:visited,.indArch:hover{background:url(img/i_arch_link.png);height:90px;width:251px;display:block}
+	.indAbou:link,.indAbou:visited,.indAbou:hover{background:url(img/i_abou_link.png);height:50px;width:251px;display:block}
+	.indProj:link,.indProj:visited,.indProj:hover{background:url(img/i_proj_link.png);height:50px;width:251px;display:block}
+	.indUnde:link,.indUnde:visited,.indUnde:hover{background:url(img/i_unde_link.png);height:70px;width:251px;display:block}
+#indGround{background:url(img/i_ground.png);width:960px;height:520px}
+
+#indPlanes:link,#indPlanes:visited{background:url(img/i_planes.jpg);width:350px;height:150px;left:500px;float:left}
+#indPlanes:hover{background:url(img/i_planes_hover.jpg);width:350px;height:150px;left:500px;float:left}
+
+/*
+Projects ----------------------------------------*/
+#proLinks{margin:0;list-style:none;display:block;float:left}
+	#proLinks li{visibility:hidden}
+	.proInde:link,.proInde:visited,.proInde:hover{background:url(img/p_link_inde.jpg);height:100px;width:200px;display:block}
+	.proArch:link,.proArch:visited,.proArch:hover{background:url(img/p_link_arch.jpg);height:120px;width:200px;display:block}
+	.proAbou:link,.proAbou:visited,.proAbou:hover{background:url(img/p_link_abou.jpg);height:50px;width:200px;display:block}
+	.proUnde:link,.proUnde:visited,.proUnde:hover{background:url(img/p_link_unde.jpg);height:120px;width:200px;display:block}
+	.proPost{background:url(img/p_post.jpg);height:410px;width:200px;display:block}
+#proBoardLeft{background:url(img/p_board_left.jpg);width:200px;height:800px;float:left}
+#proBoardMain{background:url(img/p_board_main.jpg);width:280px;height:550px;float:left;padding:50px 10px 200px 20px}
+#proBoardRight{background:url(img/p_board_right.jpg);width:240px;height:800px;float:left}
+
+/*
+About -------------------------------------------*/
+#aboLinks{margin:0;list-style:none;display:block;float:left}
+	#aboLinks li{visibility:hidden}
+	.aboInde:link,.aboInde:visited,.aboInde:hover{background:url(img/a_link_inde.jpg);height:100px;width:200px;display:block}
+	.aboArch:link,.aboArch:visited,.aboArch:hover{background:url(img/a_link_arch.jpg);height:120px;width:200px;display:block}
+	.aboProj:link,.aboProj:visited,.aboProj:hover{background:url(img/a_link_proj.jpg);height:50px;width:200px;display:block}
+	.aboUnde:link,.aboUnde:visited,.aboUnde:hover{background:url(img/a_link_unde.jpg);height:120px;width:200px;display:block}
+	.aboPost{background:url(img/a_post.jpg);height:410px;width:200px;display:block}
+#aboBoard{background:url(img/a_board.jpg);width:690px;height:500px;padding:100px 50px 200px 20px;float:left}
+
+/*
+Architect ----------------------------------------*/
+#arBg{background:url(img/ar_bg.jpg);width:660px;height:290px;padding:350px 150px 100px;}
+#arBack{background:url(img/ar_link_back.jpg);width:960px;height:60px}
+
+/*
+Underground --------------------------------------*/
+#uBg{background:url(img/u_bg.jpg);width:360px;height:350px;padding:300px 300px 250px;text-align:center}
+	#uBg > ul{list-style:none}
+
+#uBgLeft{background:url(img/u_bg_left.jpg);width:960px;height:800px;}
+#uBgRight{background:url(img/u_bg_right.jpg);width:960px;height:800px;}
+
+/*
+Contact Form-------------------------------------*/
+#cBg{background:url(img/c_bg.png);width:530px;height:540px;padding:200px 215px 0;}
+#cForm>span{font-size:18px;line-height:75px;width:90px;height:75px;float:left;text-align:right;padding-right:10px;}
+#cForm>input[type="text"]{width:420px;height:23px;margin:25px 0;border:1px solid #d9d7cf; background:none;float:left}
+	#cForm>input[type="text"]:focus{background:#FFF}
+#cForm>textarea{width:420px;height:143px;margin:25px 0;border:1px solid #d9d7cf; background:none;float:left}
+	#cForm>textarea:focus{background:#FFF}
+#cForm>input[type="checkbox"]{width:25px;margin-left:70px;height:30px;float:left;text-align:right}
+#cForm>input[type="submit"]{background:none;border:none;font-size:18px;text-decoration:underline;font-family:"Palatino Linotype", Book Antiqua, Palatino, serif;color:#3d3d3d;float:right}
+#cBack{background:url(img/c_link_back.png);width:960px;height:60px}
+
+/*
+MISC ---------------------------------------------*/
+.clear{clear:both;width:0;height:0}
+h2{font-weight:bold;font-size:24px;text-indent:5px}
+p{font-size:16px;line-height:24px;margin:20px}
+li{line-height:30px}
+
+a:link{color:#3d3d3d;text-decoration:underline}
+a:hover{color:#000; text-decoration:none}
+a:visited{color:#3d3d3d;text-decoration:underline}
+
+</style>
+
+<script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div id="canvas">
+		<div id="inCanvas">
+            <div id="resume" class="scene">
+            RESUME
+            </div>
+            <div class="scene architect">
+            	<div id="arBg">
+                    <h2>The Architect</h2>
+                	<p>Carlos Ballena is a web &amp; graphic design student who enjoys learning new things and experimenting with projects like this website. He spends most of his time working on his computer and reading technological articles. Carlos and <a href="http://theanti9.com" target="_blank">Ryan Merl</a> created CrunchyWeb, a web development company that keeps them busy and gives them something to do for when things get boring.</p>
+                    <p>Carlos' goal is to improve his skills and become a bad-ass developer/designer. His dream is to own a Lamborghini Diablo and get at least 3 speeding tickets on the first day. :)</p>
+                    <p>Carlos hopes you enjoy this site and promote it. If you'd like to contact him, <a class="lCont" href="#">use this form.</a></p>
+				</div>
+                <a class="lInde" href="#"><div id="arBack"></div></a>
+            </div>
+            
+            <div id="contact" class="scene">
+            	<div id="cBg">
+                    <form id="cForm" method="post" action="">
+                    <span>Name: </span><input name="realname" type="text" />
+                    <div class="clear"></div>
+                    <span>E-Mail: </span><input name="email" type="text" />
+                    <div class="clear"></div>
+                    <span>Message: </span><textarea name="message"></textarea>
+                    <div class="clear"></div>
+                    <input type="checkbox" name="spam" /><span style="width:200px;height:30px;line-height:30px;text-align:left">This is not Spam</span>
+                    <input type="submit" />
+                    <input type="hidden" name="_config" value="sketchy" />
+                    </form>
+				</div>
+                <a class="lInde" href="#"><div id="cBack"></div></a>
+            </div>
+            
+            <div id="projects" class="scene">
+            	<ul id="proLinks">
+					<a class="proInde lInde" href="#"></a>
+					<a class="proArch lArch" href="#"></a>
+					<a class="proAbou lAbou" href="#"></a>
+					<a class="proUnde lUnde" href="#"></a>
+                    <div class="proPost"></div>
+				</ul>
+                <div id="proBoardLeft"></div>
+                <div id="proBoardMain">
+                	<h2>Projects</h2>
+                	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo ipsum, sagittis in sodales at, placerat at tellus. Pellentesque elit ligula, molestie at pulvinar ut, porta eu mauris. Quisque quis augue et mauris commodo egestas.</p>
+                    <p>Aliquam enim ante, scelerisque non dignissim vitae, porta in elit. Suspendisse potenti. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In a augue purus, at vehicula risus. Morbi sed venenatis nisi. Mauris rhoncus eros at lacus dictum vestibulum.</p>
+                </div>
+                <div id="proBoardRight"></div>
+            </div>
+            
+            <div id="index" class="scene">
+            	<ul id="indLinks">
+					<a class="indArch lArch" href="#"></a>
+					<a class="indAbou lAbou" href="#"></a>
+					<a class="indProj lProj" href="#"></a>
+					<a class="indUnde lUnde" href="#"></a>
+				</ul>
+                <a id="indPlanes" class="lCont" href="#"></a>
+                <div class="clear"></div>
+                <div id="indGround"></div>
+            </div>
+            
+            <div id="about" class="scene">
+            	<ul id="aboLinks">
+					<a class="aboInde lInde" href="#"></a>
+					<a class="aboArch lArch" href="#"></a>
+					<a class="aboProj lProj" href="#"></a>
+					<a class="aboUnde lUnde" href="#"></a>
+                    <div class="aboPost"></div>
+				</ul>
+                <div id="aboBoard">
+                	<h2>About SketchyWeb</h2>
+                	<p>SketchyWeb is an ongoing project created by Carlos Ballena. It is a single page portfolio  website, that uses CSS and jQuery for navigation.</p>
+                    <p>Although SketchyWeb started as a school project, Carlos plans to put more time into it and make other templates based on the same concept. He considers SketchyWeb to be on a very early stage and plans to add more funcionality to the site. If you have ideas on how to improve it or would like to collaborate on the site's development, <a class="lCont" href="#">contact Carlos using our form.</a></p>
+                    <p>This site is brought to you by <a href="http://crunchyweb.com" target="_blank">CrunchyWeb</a>.</p>
+                    <br /><br /><br /><br /><br /><br /><br />
+                    <p align="right"><i>-- The Architect</i></p>
+                </div>
+            </div>
+            
+            <div id="under" class="scene">
+            	<div id="uBgLeft"></div>
+            </div>
+            
+            <div id="underLinks" class="scene">
+            	<div id="uBg">
+                    <h2>Other Links</h2>
+                	<ul>
+                    <li><a href="http://crunchyweb.com" target="_blank">Crunchy Web</a></li>
+                    <li><a href="http://cballenar.com" target="_blank">CBallenar</a></li>
+                    <li><a href="http://the-empty-canvas.blogspot.com/" target="_blank">Art Blog</a></li>
+                    <li>More</li>
+                    <li>Etc</li>
+                    <br />
+                    <br />
+                    <li><a class="lInde" href="#">Back To The Surface</a></li>
+                    </ul>
+				</div>
+                <a class="lInde" href="#"><div id="uBack"></div></a>
+            </div>
+            
+            <div id="under" class="scene">
+            	<div id="uBgRight"></div>
+            </div>
+        </div>
+	</div>
+
+<script type="text/javascript">
+
+// Loading Script
+	images = ['img/bg.jpg','img/a_board.jpg','img/a_link_arch.jpg','img/a_link_inde.jpg','img/a_link_proj.jpg','img/a_link_unde.jpg','img/a_post.jpg','img/ar_bg.jpg','img/ar_link_back.jpg','img/c_bg.png','img/c_link_back.png','img/i_abou_link.png','img/i_arch_link.png', 'img/i_ground.png','img/i_planes_hover.jpg', 'img/i_planes.jpg','img/i_planes.png','img/i_proj_link.png','img/i_unde_link.png','img/p_board_left.jpg','img/p_board_main.jpg','img/p_board_right.jpg','img/p_link_abou.jpg','img/p_link_arch.jpg','img/p_link_inde.jpg','img/p_link_unde.jpg','img/p_post.jpg','img/u_bg_left.jpg','img/u_bg_right.jpg','img/u_bg.jpg','img/u_link_back.png']
+	$('#canvas').hide();
+	$('body').append('<div id="loading" style="width:250px;height:100px;position:relative;margin:350px auto;"><img id="loadingText" src="img/load_text.gif" /><div id="loadingFill" style="width:250px;height:50px;position:relative;z-index:500;background:url(img/load_fill.gif);"></div><div id="loadingBox" style="margin-top:-50px;width:250px;height:50px;position:relative;z-index:300;background:url(img/load_bg.gif);"></div></div>').fadeIn();
+	$('#loadingFill').width(0);
+	var max = images.length;
+	LoadImage(0,max);
+	var chunk = 250/max;
+	function LoadImage(index,max) {
+		if (index<max) {
+			var img = new Image();
+			$(img).load(function() {
+				$('#loadingFill').animate({'width':(chunk*index)},100);
+				LoadImage(index+1,max);
+			}).attr('src', images[index]);
+		} else {
+			finish();
+		}
+	}
+	function finish() {
+		$('#loading').fadeOut();
+		$('#canvas').fadeIn();
+	}
+
+// Navigation Script
+	$(document).ready(function(){
+	    $("#inCanvas").css({left:"-960px",top:"-800px"});
+		$(".lArch").click(function(){
+			$("#inCanvas").animate({left:"-960px",top:"0"},"1000");
+		});
+		$(".lCont").click(function(){
+			$("#inCanvas").animate({left:"-1920px",top:"0"},"1000");
+		});
+		$(".lProj").click(function(){
+			$("#inCanvas").animate({left:"0",top:"-800px"},"1000");
+		});
+		$(".lInde").click(function(){
+			$("#inCanvas").animate({left:"-960px",top:"-800px"},"1000");
+		});
+		$(".lAbou").click(function(){
+			$("#inCanvas").animate({left:"-1920px",top:"-800px"},"1000");
+		});
+		$(".lUnde").click(function(){
+			$("#inCanvas").animate({left:"-960px",top:"-1600px"},"1000");
+		});
+	});
+
+// GoSquared Tracking Script
+    var GoSquared={};
+    GoSquared.acct = "GSN-935427-A";
+    (function(w){
+        function gs(){
+            w._gstc_lt=+(new Date); var d=document;
+            var g = d.createElement("script"); g.type = "text/javascript"; g.async = true; g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+            var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(g, s);
+        }
+        w.addEventListener?w.addEventListener("load",gs,false):w.attachEvent("onload",gs);
+    })(window);
+</script>
+</body>
+</html>
